@@ -12,22 +12,21 @@ import css from '../css/css.css';
 
 import QRCode from 'qrcode_js';
 
-import WebsocketH5 from './entities/WebsocketH5.js';
+import WebsocketH5 from './entities/WebsocketH5.js'
 
 
 window.h5 = {
     initWebsocket: function() {
-
-        WebsocketH5;
-
+        var _text = 'http://jindo.dev.naver.com/collie';
         var qrcode = new QRCode(document.getElementById("qrcode"), {
-            text: "http://jindo.dev.naver.com/collie",
+            text: 'ws://' + location.host,
             width: 128,
             height: 128,
             colorDark: "#000000",
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
         });
+        WebsocketH5;
     },
     isPc: function() {
         var userAgentInfo = navigator.userAgent;

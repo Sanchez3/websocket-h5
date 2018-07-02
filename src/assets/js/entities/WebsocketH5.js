@@ -6,16 +6,30 @@ if (!window.WebSocket) {
 
 var WebSocketH5 = function() {
 
-
     this.ws = null;
     this.init = function() {
-        var ws = new WebSocket('ws://' + location.host + ':8080');
+        // var _text = 'http://jindo.dev.naver.com/collie' ;
+        // var qrcode = new QRCode(document.getElementById("qrcode"), {
+        //     text: _text,
+        //     width: 128,
+        //     height: 128,
+        //     colorDark: "#000000",
+        //     colorLight: "#ffffff",
+        //     correctLevel: QRCode.CorrectLevel.H
+        // });
+
+        var ws = new WebSocket('ws://' + location.host);
         ws.onopen = function() {
             console.log('Connection open ...');
         }
         ws.onclose = function() {
             console.log('Connection closed.');
         }
+        ws.onmessage = function(event) {
+            console.log('Received Message: ' + event.data);
+        }
+
+        ws.send('{type: 101, data: 1}');
         this.ws = ws;
 
     }
@@ -25,13 +39,7 @@ var WebSocketH5 = function() {
         ws.onmessage = process_ws_msg;
         this.ws = ws;
     }
-
-    this.process_ws_msg = function(event) {
-
-
-    }
-
-    this.init();
+        this.init();
 }
 
 
