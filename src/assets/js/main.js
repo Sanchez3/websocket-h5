@@ -8,22 +8,27 @@
 //     console.log('Looks like we are in development mode!');
 // }
 
-// import CSS
-// import animate_css from 'animate.css/animate.min.css';
 import css from '../css/css.css';
-import scss from '../css/sass.scss';
 
+import QRCode from 'qrcode_js';
 
-// import Js Plugins/Entities
-
-//ES6 Module
-import Bar1 from './entities/Bar1';
-import Howler from 'howler';
-//CommonJS
-var Bar2 = require('./entities/Bar2');
+import WebsocketH5 from './entities/WebsocketH5.js';
 
 
 window.h5 = {
+    initWebsocket: function() {
+
+        WebsocketH5;
+
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: "http://jindo.dev.naver.com/collie",
+            width: 128,
+            height: 128,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    },
     isPc: function() {
         var userAgentInfo = navigator.userAgent;
         var Agents = new Array('Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod');
@@ -102,6 +107,7 @@ window.h5 = {
     init: function() {
         var that = this;
         that.cssInit().eventInit();
+        that.initWebsocket();
     }
 };
 window.onload = function() {
