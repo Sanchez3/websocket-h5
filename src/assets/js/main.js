@@ -10,7 +10,7 @@
 
 import css from '../css/css.css';
 
-import QRCode from 'qrcode_js';
+import QRCode from 'qrcodejs2';
 
 import WebsocketH5 from './entities/WebsocketH5.js'
 
